@@ -1,1 +1,1 @@
-See it live at [https://vindexinsanctirex.github.io/Portfolio/](https://vindexinsanctirex.github.io/Portfolio/){:target="_blank"}
+See it live at <a href="https://vindexinsanctirex.github.io/Portfolio/" target="_blank" rel="noopener noreferrer">Portfolio</a>
