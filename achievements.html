@@ -1,544 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates & Workshops - Caio S Duarte</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Navigation */
-        .nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ddd;
-        }
-
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nav a:hover {
-            background: #95a5a6;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .nav a.active {
-            background: #7f8c8d;
-            color: white;
-        }
-
-        /* Achievements Content */
-        .achievements-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.5s ease-in;
-            border: 1px solid #ddd;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .achievements-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .achievements-header h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .achievements-header p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-        }
-
-        /* Category Tabs */
-        .category-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: nowrap;
-        }
-
-        .category-tab {
-            padding: 12px 24px;
-            background: rgba(149, 165, 166, 0.1);
-            border: 2px solid #95a5a6;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
-            flex: 0 1 auto;
-        }
-
-        .category-tab:hover {
-            background: #95a5a6;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .category-tab.active {
-            background: #95a5a6;
-            color: white;
-        }
-
-        .category-tab.certificates {
-            border-color: #c0c0c0;
-            background: rgba(192, 192, 192, 0.1);
-        }
-
-        .category-tab.certificates:hover,
-        .category-tab.certificates.active {
-            background: #c0c0c0;
-            color: white;
-        }
-
-        .category-tab.workshops {
-            border-color: #cd7f32;
-            background: rgba(205, 127, 50, 0.1);
-        }
-
-        .category-tab.workshops:hover,
-        .category-tab.workshops.active {
-            background: #cd7f32;
-            color: white;
-        }
-
-        /* Category Content */
-        .category-content {
-            display: none;
-        }
-
-        .category-content.active {
-            display: block;
-        }
-
-        /* Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .gallery-item {
-            background: white;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #ddd;
-            position: relative;
-            z-index: 1;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-item .caption {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .gallery-item .caption h3 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .gallery-item .caption p {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-
-        /* Certificate specific styling */
-        .gallery-item.certificate {
-            border-left: 4px solid #c0c0c0;
-        }
-
-        /* Workshop specific styling */
-        .gallery-item.workshop {
-            border-left: 4px solid #cd7f32;
-        }
-
-        /* Image Modal/Expansion */
-        .image-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            cursor: pointer;
-        }
-
-        .image-modal img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border: 2px solid #ddd;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .gallery-item img {
-            cursor: pointer;
-        }
-
-        .gallery-item img:hover {
-            opacity: 0.8;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(149, 165, 166, 0.9);
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ddd;
-            z-index: 1000;
-        }
-
-        .back-to-top:hover {
-            background: rgba(127, 140, 141, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .achievements-header h1 {
-                font-size: 2rem;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .achievements-content {
-                padding: 20px;
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 16px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <title>Conquistas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="achievements.html" class="active">Certificates & Workshops</a></li>
-            </ul>
-        </nav>
-
-        <!-- Achievements Content -->
-        <div class="achievements-content">
-            <div class="achievements-header">
-                <h1>Certificates & Workshops</h1>
-                <p>Professional Development Achievements</p>
-            </div>
-
-            <div class="category-tabs">
-                <div class="category-tab certificates" data-category="certificates">Certificates</div>
-                <div class="category-tab workshops" data-category="workshops">Workshops</div>
-            </div>
-
-            <!-- Certificates Category -->
-            <div id="certificates" class="category-content">
-                <div class="gallery">
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert coding foundations.jpg" alt="Coding Foundations Certificate">
-                        <div class="caption">
-                            <h3>Coding Foundations</h3>
-                            <p>Mastery of fundamental programming concepts including variables, data types, control structures, functions, and best practices. Foundation for all programming languages and software development principles.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert python dev.jpg" alt="Python Development Certificate">
-                        <div class="caption">
-                            <h3>Python Developer</h3>
-                            <p>Core Python programming skills covering syntax, data structures, object-oriented programming, file handling, and basic algorithms. Essential foundation for Python-based development projects.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert python inter.jpg" alt="Python Intermediate Certificate">
-                        <div class="caption">
-                            <h3>Python Intermediate</h3>
-                            <p>Advanced Python concepts including decorators, generators, context managers, exception handling, and advanced data manipulation. Building scalable and maintainable Python applications.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert python gold.jpg" alt="Python Gold Certificate">
-                        <div class="caption">
-                            <h3>Python Gold Certificate</h3>
-                            <p>Expert-level Python programming covering design patterns, performance optimization, advanced libraries, testing frameworks, and production-ready code development. Mastery of Python ecosystem.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert python AI.jpg" alt="Python AI Certificate">
-                        <div class="caption">
-                            <h3>Python AI Development</h3>
-                            <p>Specialized Python programming for artificial intelligence applications. Covers machine learning libraries, neural networks, data preprocessing, model training, and AI algorithm implementation.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert ML begin.jpg" alt="Machine Learning Basics Certificate">
-                        <div class="caption">
-                            <h3>ML - Machine Learning Basics</h3>
-                            <p>Introduction to machine learning fundamentals including supervised/unsupervised learning, classification, regression, clustering algorithms, and model evaluation techniques. Foundation for AI development.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert genAI.jpg" alt="Generative AI Certificate">
-                        <div class="caption">
-                            <h3>Generative AI</h3>
-                            <p>Modern generative AI technologies including large language models, text generation, image synthesis, and creative AI applications. Understanding of cutting-edge AI development and deployment.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert intro LLMs.jpg" alt="Large Language Models Certificate">
-                        <div class="caption">
-                            <h3>Introduction to LLMs</h3>
-                            <p>Comprehensive understanding of large language models, their architecture, training processes, fine-tuning techniques, and practical applications in natural language processing and AI systems.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert SQL module.jpg" alt="SQL Module Certificate">
-                        <div class="caption">
-                            <h3>SQL Module</h3>
-                            <p>Database fundamentals and SQL basics covering data modeling, table creation, CRUD operations, basic queries, and database design principles. Essential for data management and analysis.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/cert SQL inter.jpg" alt="SQL Intermediate Certificate">
-                        <div class="caption">
-                            <h3>SQL Core Principles</h3>
-                            <p>Advanced database concepts including complex queries, joins, subqueries, indexing, optimization, stored procedures, and database administration. Professional database management skills.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item certificate">
-                        <img src="Certificates/top 25 cert.jpg" alt="Top 100 Certificate">
-                        <div class="caption">
-                            <h3>Top 25 Achievement</h3>
-                            <p>Recognition for outstanding performance and exceptional achievement in programming education. Demonstrates commitment to excellence and mastery of technical skills across multiple domains.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Workshops Category -->
-            <div id="workshops" class="category-content">
-                <div class="gallery">
-                    <div class="gallery-item workshop">
-                        <img src="Workshops/workshop Github.jpg" alt="GitHub Workshop">
-                        <div class="caption">
-                            <h3>GitHub Collaboration</h3>
-                            <p>Hands-on experience with version control systems, collaborative development workflows, branching strategies, pull requests, code review processes, and team-based software development best practices.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item workshop">
-                        <img src="Workshops/workshop data math.jpg" alt="Data Mathematics Workshop">
-                        <div class="caption">
-                            <h3>Data Mathematics</h3>
-                            <p>Mathematical foundations for data science including statistics, linear algebra, calculus, probability theory, and their applications in machine learning algorithms and data analysis techniques.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item workshop">
-                        <img src="Workshops/workshop python zomb.jpg" alt="Python Zombie Workshop">
-                        <div class="caption">
-                            <h3>Python Programming Challenge</h3>
-                            <p>Intensive hands-on coding challenges and problem-solving exercises. Practical application of Python programming concepts through real-world scenarios, debugging, and algorithmic thinking development.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-item workshop">
-                        <img src="Workshops/workshop teamwork.jpg" alt="Teamwork Workshop">
-                        <div class="caption">
-                            <h3>Teamwork & Collaboration</h3>
-                            <p>Effective team dynamics, project management methodologies, communication strategies, agile development practices, and collaborative problem-solving techniques for software development teams.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <header>
+        <section id="pt">
+            <h1>Conquistas</h1>
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="achievements.html" class="active">Conquistas</a>
+            </nav>
+        </section>
+        <section id="en" style="display:none">
+            <h1>Achievements</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="achievements.html" class="active">Achievements</a>
+            </nav>
+        </section>
+        <div class="language-switch">
+            <button onclick="switchLang('pt-br')" id="btn-pt" class="active">PT-BR</button>
+            <button onclick="switchLang('en')" id="btn-en">EN</button>
         </div>
-    </div>
+    </header>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" onclick="scrollToTop()">↑ Top</a>
+    <main>
+        <div id="modal" class="modal">
+            <img src="" alt="">
+        </div>
 
-    <!-- Image Modal -->
-    <div class="image-modal" id="imageModal">
-        <img id="modalImage" src="" alt="Expanded Image">
-    </div>
+        <section id="pt">
+            <div class="section-toggle">
+                <button onclick="toggleSection('certificates')" class="active" data-section="certificates">Certificados</button>
+                <button onclick="toggleSection('workshops')" data-section="workshops">Workshops</button>
+            </div>
+
+            <div id="certificates-section" class="content-section active">
+                <h2>Certificados</h2>
+                <div class="gallery">
+                    <div class="certificate-card">
+                        <img src="Certificates/angular.jpg" alt="Certificado Angular">
+                        <div class="card-description">Certificação em desenvolvimento web com Angular, abrangendo componentes, serviços e gerenciamento de estado.</div>
+                    </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert coding foundations.jpg" alt="Fundamentos de Programação">
+                    <div class="card-description">Fundamentos essenciais de programação, incluindo lógica, estruturas de dados e algoritmos básicos.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert genAI.jpg" alt="GenAI">
+                    <div class="card-description">Inteligência Artificial Generativa: conceitos, aplicações e desenvolvimento de modelos generativos.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert intro LLMs.jpg" alt="Introdução LLMs">
+                    <div class="card-description">Introdução aos Modelos de Linguagem Grande (LLMs): arquitetura, treinamento e aplicações práticas.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert ML begin.jpg" alt="Machine Learning Iniciante">
+                    <div class="card-description">Fundamentos de Machine Learning: algoritmos básicos, preparação de dados e avaliação de modelos.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python AI.jpg" alt="Python para IA">
+                    <div class="card-description">Python aplicado à Inteligência Artificial: bibliotecas, frameworks e desenvolvimento de projetos.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python dev.jpg" alt="Python Developer">
+                    <div class="card-description">Desenvolvimento profissional com Python: web, APIs, banco de dados e boas práticas.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python gold.jpg" alt="Python Gold">
+                    <div class="card-description">Certificação avançada em Python: padrões de projeto, otimização e desenvolvimento enterprise.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python inter.jpg" alt="Python Intermediário">
+                    <div class="card-description">Python intermediário: programação orientada a objetos, tratamento de erros e módulos.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert SQL inter.jpg" alt="SQL Intermediário">
+                    <div class="card-description">SQL intermediário: joins, subconsultas, índices e otimização de consultas.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert SQL module.jpg" alt="SQL Módulo">
+                    <div class="card-description">Módulo completo de SQL: modelagem de dados, transações e administração de banco de dados.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/coding for data.jpg" alt="Coding for Data">
+                    <div class="card-description">Programação para análise de dados: manipulação, visualização e análise exploratória.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/flask python.jpg" alt="Flask Python">
+                    <div class="card-description">Desenvolvimento web com Flask: criação de APIs RESTful e aplicações web.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/google analytics.jpg" alt="Google Analytics">
+                    <div class="card-description">Google Analytics: análise de dados web, métricas e otimização de conversão.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/top 25 cert.jpg" alt="Top 25 Certificados">
+                    <div class="card-description">Reconhecimento Top 25: conjunto das principais certificações em desenvolvimento e análise de dados.</div>
+                </div>
+            </div>
+
+            </div>
+            <div id="workshops-section" class="content-section">
+                <h2>Workshops</h2>
+                <div class="gallery">
+                    <div class="workshop-card">
+                        <img src="Workshops/selenium automation.jpg" alt="Selenium Automation">
+                        <div class="card-description">Automação de testes com Selenium: testes funcionais e integração contínua.</div>
+                    </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop data math.jpg" alt="Workshop Data Math">
+                    <div class="card-description">Matemática para Ciência de Dados: estatística, álgebra linear e probabilidade.</div>
+                </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop Github.jpg" alt="Workshop Github">
+                    <div class="card-description">GitHub avançado: fluxo de trabalho, CI/CD e colaboração em equipe.</div>
+                </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop python zomb.jpg" alt="Workshop Python">
+                    <div class="card-description">Python Game Dev: desenvolvimento de jogos usando Pygame.</div>
+                </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop teamwork.jpg" alt="Workshop Trabalho em Equipe">
+                    <div class="card-description">Habilidades de trabalho em equipe: comunicação, liderança e gestão de conflitos.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="en" style="display:none">
+            <div class="section-toggle">
+                <button onclick="toggleSection('certificates')" class="active" data-section="certificates">Certificates</button>
+                <button onclick="toggleSection('workshops')" data-section="workshops">Workshops</button>
+            </div>
+
+            <div id="certificates-section" class="content-section active">
+                <h2>Certificates</h2>
+                <div class="gallery">
+                    <div class="certificate-card">
+                        <img src="Certificates/angular.jpg" alt="Angular Certificate">
+                        <div class="card-description">Angular web development certification, covering components, services, and state management.</div>
+                    </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert coding foundations.jpg" alt="Coding Foundations">
+                    <div class="card-description">Essential programming fundamentals, including logic, data structures, and basic algorithms.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert genAI.jpg" alt="GenAI">
+                    <div class="card-description">Generative AI: concepts, applications, and development of generative models.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert intro LLMs.jpg" alt="Intro to LLMs">
+                    <div class="card-description">Introduction to Large Language Models: architecture, training, and practical applications.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert ML begin.jpg" alt="Machine Learning Beginner">
+                    <div class="card-description">Machine Learning fundamentals: basic algorithms, data preparation, and model evaluation.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python AI.jpg" alt="Python for AI">
+                    <div class="card-description">Python for AI: libraries, frameworks, and project development.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python dev.jpg" alt="Python Developer">
+                    <div class="card-description">Professional Python development: web, APIs, databases, and best practices.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python gold.jpg" alt="Python Gold">
+                    <div class="card-description">Advanced Python certification: design patterns, optimization, and enterprise development.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert python inter.jpg" alt="Python Intermediate">
+                    <div class="card-description">Intermediate Python: object-oriented programming, error handling, and modules.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert SQL inter.jpg" alt="SQL Intermediate">
+                    <div class="card-description">Intermediate SQL: joins, subqueries, indexes, and query optimization.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/cert SQL module.jpg" alt="SQL Module">
+                    <div class="card-description">Complete SQL module: data modeling, transactions, and database administration.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/coding for data.jpg" alt="Coding for Data">
+                    <div class="card-description">Programming for data analysis: manipulation, visualization, and exploratory analysis.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/flask python.jpg" alt="Flask Python">
+                    <div class="card-description">Web development with Flask: creating RESTful APIs and web applications.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/google analytics.jpg" alt="Google Analytics">
+                    <div class="card-description">Google Analytics: web data analysis, metrics, and conversion optimization.</div>
+                </div>
+                <div class="certificate-card">
+                    <img src="Certificates/top 25 cert.jpg" alt="Top 25 Certificates">
+                    <div class="card-description">Top 25 Recognition: collection of key certifications in development and data analysis.</div>
+                </div>
+            </div>
+
+            </div>
+            <div id="workshops-section" class="content-section">
+                <h2>Workshops</h2>
+                <div class="gallery">
+                    <div class="workshop-card">
+                        <img src="Workshops/selenium automation.jpg" alt="Selenium Automation">
+                        <div class="card-description">Test automation with Selenium: functional testing and continuous integration.</div>
+                    </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop data math.jpg" alt="Data Math Workshop">
+                    <div class="card-description">Mathematics for Data Science: statistics, linear algebra, and probability.</div>
+                </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop Github.jpg" alt="Github Workshop">
+                    <div class="card-description">Advanced GitHub: workflow, CI/CD, and team collaboration.</div>
+                </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop python zomb.jpg" alt="Python Workshop">
+                    <div class="card-description">Python Game Dev: game development using Pygame.</div>
+                </div>
+                <div class="workshop-card">
+                    <img src="Workshops/workshop teamwork.jpg" alt="Teamwork Workshop">
+                    <div class="card-description">Teamwork skills: communication, leadership, and conflict management.</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top" title="Voltar ao topo / Back to top">↑</a>
 
     <script>
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        function switchLang(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[id="pt"]').forEach(el => {
+                el.style.display = lang === 'pt-br' ? 'block' : 'none';
+            });
+            document.querySelectorAll('[id="en"]').forEach(el => {
+                el.style.display = lang === 'en' ? 'block' : 'none';
+            });
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt-br');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.title = lang === 'pt-br' ? 'Conquistas' : 'Achievements';
+        }
+
+        function toggleSection(section) {
+            // Atualizar botões
+            document.querySelectorAll('.section-toggle button').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.section === section);
+            });
+
+            // Atualizar seções de conteúdo
+            document.querySelectorAll('.content-section').forEach(el => {
+                const isActive = el.id === `${section}-section`;
+                el.classList.toggle('active', isActive);
             });
         }
 
-        // Show/hide back to top button based on scroll position
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'block';
-            } else {
-                backToTop.style.display = 'none';
-            }
+        // Garantir estado inicial correto
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLang('pt-br');
         });
 
-        // Initially hide the back to top button
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTop = document.querySelector('.back-to-top');
+        // Botão voltar ao topo
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+        document.addEventListener('DOMContentLoaded', () => {
             backToTop.style.display = 'none';
         });
 
-        // Category tabs functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryTabs = document.querySelectorAll('.category-tab');
-            const categoryContents = document.querySelectorAll('.category-content');
+        // Modal de imagem
+        const modal = document.getElementById('modal');
+        const modalImg = modal.querySelector('img');
+        const cards = document.querySelectorAll('.certificate-card, .workshop-card');
 
-            categoryTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const targetCategory = this.getAttribute('data-category');
-                    const targetContent = document.getElementById(targetCategory);
-                    
-                    // Check if the clicked tab is already active
-                    if (this.classList.contains('active')) {
-                        // If already active, close it
-                        this.classList.remove('active');
-                        targetContent.classList.remove('active');
-                    } else {
-                        // If not active, close all and open the clicked one
-                        categoryTabs.forEach(t => t.classList.remove('active'));
-                        categoryContents.forEach(content => content.classList.remove('active'));
-                        
-                        this.classList.add('active');
-                        targetContent.classList.add('active');
-                    }
-                });
+        cards.forEach(card => {
+            const img = card.querySelector('img');
+            img.addEventListener('click', () => {
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                modal.classList.add('active');
             });
+        });
 
-            // Image click functionality
-            const images = document.querySelectorAll('.gallery-item img');
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-
-            images.forEach(img => {
-                img.addEventListener('click', function() {
-                    modalImg.src = this.src;
-                    modalImg.alt = this.alt;
-                    modal.style.display = 'flex';
-                });
-
-                // Error handling for images
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                    const caption = this.parentElement.querySelector('.caption');
-                    if (caption) {
-                        caption.innerHTML = '<p style="color: #e74c3c;">Image not available</p>';
-                    }
-                });
-            });
-
-            // Close modal when clicking on it
-            modal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.style.display === 'flex') {
-                    modal.style.display = 'none';
-                }
-            });
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
         });
     </script>
 </body>
-</html> 
+</html>

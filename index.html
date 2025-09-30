@@ -1,425 +1,142 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caio S Duarte - Portfólio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Navigation */
-        .nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin: 0;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            padding: 10px 20px;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            position: relative;
-            z-index: 1;
-        }
-
-        .nav a:hover {
-            background: #95a5a6;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .nav a.active {
-            background: #7f8c8d;
-            color: white;
-        }
-
-        .language-switcher {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .language-switcher:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        /* Resume Content */
-        .resume-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.5s ease-in;
-            border: 1px solid #ddd;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .resume-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .resume-header h1 {
-            font-size: 3rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .resume-header p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-        }
-
-        .resume-section {
-            margin-bottom: 40px;
-        }
-
-        .resume-section h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #95a5a6;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .resume-item {
-            background: rgba(149, 165, 166, 0.1);
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #95a5a6;
-            border: 1px solid #ddd;
-        }
-
-        .resume-item h3 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .resume-item .date {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(149, 165, 166, 0.9);
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ddd;
-            z-index: 1000;
-        }
-
-        .back-to-top:hover {
-            background: rgba(127, 140, 141, 0.9);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .resume-header h1 {
-                font-size: 2rem;
-            }
-
-            .container {
-                padding: 10px;
-            }
-
-            .resume-content {
-                padding: 20px;
-            }
-
-            .back-to-top {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 16px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    <title>Portfólio de Caio S. Duarte</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="nav">
-            <ul>
-                <li><a href="index.html" class="active">Início</a></li>
-                <li><a href="achievements.html">Certificados & Workshops</a></li>
-            </ul>
-            <button class="language-switcher" onclick="toggleLanguage()">English</button>
-        </nav>
+    <header>
+        <section id="pt">
+            <h1>Portfólio de Caio S. Duarte</h1>
+            <nav>
+                <a href="index.html" class="active">Início</a>
+                <a href="achievements.html">Conquistas</a>
+            </nav>
+        </section>
+        <section id="en" style="display:none">
+            <h1>Caio S. Duarte Portfolio</h1>
+            <nav>
+                <a href="index.html" class="active">Index</a>
+                <a href="achievements.html">Achievements</a>
+            </nav>
+        </section>
+        <div class="language-switch">
+            <button onclick="switchLang('pt-br')" id="btn-pt" class="active">PT-BR</button>
+            <button onclick="switchLang('en')" id="btn-en">EN</button>
+        </div>
+    </header>
 
-        <!-- Resume Content -->
-        <div class="resume-content" id="portuguese-content">
-            <div class="resume-header">
-                <h1>Caio S Duarte</h1>
-                <p>Desenvolvedor de Software & Entusiasta de IA</p>
+    <main>
+        <section id="pt">
+            <h2>Bem-vindo ao meu portfólio!</h2>
+            <p>Desenvolvedor de software com foco em Python e IA, sempre em busca de novos desafios e aprendizados. Explore minhas certificações e workshops para conhecer minha jornada de desenvolvimento profissional.</p>
+            
+            <h2>Habilidades</h2>
+            <div class="skills">
+                <p><strong>Linguagens:</strong> Python, SQL, HTML, CSS, JavaScript</p>
+                <p><strong>Tecnologias:</strong> Machine Learning, IA, Desenvolvimento Web, Frontend, Backend, Full-Stack/p>
+                <p><strong>Ferramentas:</strong> Git, GitHub, VS Code, Jupyter, Colab</p>
+                <p><strong>Estruturas & Bibliotecas:</strong> React, Node, Flask, Django</p>
             </div>
 
-            <div class="resume-section">
-                <h2>Resumo Profissional</h2>
-                <div class="resume-item">
-                    <p>Desenvolvedor de software apaixonado com expertise em Python, IA/ML e desenvolvimento web. 
-                    Histórico comprovado de conclusão de múltiplas certificações em fundamentos de programação, 
-                    IA/ML e gerenciamento de bancos de dados. Forte base tanto em conhecimento teórico quanto 
-                    em aplicação prática através de workshops e projetos hands-on.</p>
-                </div>
-            </div>
-
-            <div class="resume-section">
-                <h2>Habilidades Técnicas</h2>
-                <div class="resume-item">
-                    <h3>Linguagens de Programação</h3>
-                    <p>Python (Intermediário a Avançado), SQL, HTML, CSS & JavaScript</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Tecnologias & Frameworks</h3>
-                    <p>Machine Learning, Inteligência Artificial, IA Generativa, Desenvolvimento Web</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Ferramentas & Plataformas</h3>
-                    <p>GitHub, Ferramentas de Análise de Dados, Ambientes de Desenvolvimento</p>
-                </div>
-            </div>
-
-            <div class="resume-section">
-                <h2>Formação & Certificações</h2>
-                <div class="resume-item">
+            <h2>Formação Acadêmica</h2>
+            <div class="education">
+                <div class="education-item">
                     <h3>Análise e Desenvolvimento de Sistemas</h3>
-                    <div class="date">2024 - 2025</div>
-                    <p>Como graduado em Análise e Desenvolvimento de Sistemas, possuo um conjunto abrangente de 
-                    habilidades no ciclo completo de desenvolvimento de software. Minha expertise inclui traduzir 
-                    requisitos complexos de negócio em especificações técnicas, desenvolvimento de aplicações 
-                    full-stack e design de bancos de dados. Sou proficiente em linguagens de programação modernas, 
-                    metodologias Ágeis e práticas DevOps, permitindo-me projetar, construir e implantar soluções 
-                    digitais eficientes e escaláveis que impulsionam a excelência operacional e atendem aos 
-                    objetivos estratégicos de negócio.</p>
+                    <p class="period">Janeiro 2024 - Julho 2025</p>
+                    <p>Curso técnico na ETE-EAD/PE com foco em desenvolvimento de software, metodologias ágeis e gestão de projetos.</p>
                 </div>
-                <div class="resume-item">
-                    <h3>Trilha de Desenvolvimento Python</h3>
-                    <div class="date">2023 - 2025</div>
-                    <p>Certificação abrangente em desenvolvimento Python cobrindo fundamentos, conceitos 
-                    intermediários, avançados e aplicações em IA</p>
+                
+                <div class="education-item">
+                    <h3>Desenvolvimento Full-Stack (Certificado pela Google & Microsoft)</h3>
+                    <p class="period">Junho 2025 - Julho 2026</p>
+                    <p>Curso profissionalizante aprovado pela Google e Microsoft na Infinity School, abrangendo tecnologias modernas de desenvolvimento web e mobile.</p>
                 </div>
-                <div class="resume-item">
-                    <h3>IA & Machine Learning</h3>
-                    <div class="date">2023 - 2025</div>
-                    <p>Treinamento especializado em fundamentos de IA, conceitos básicos de machine learning 
-                    e tecnologias de IA generativa</p>
+                
+                <div class="education-item">
+                    <h3>Desenvolvimento Backend com Python</h3>
+                    <p class="period">Agosto 2025 - Fevereiro 2026</p>
+                    <p>Formação especializada em Python pela SOFTEX PE, focada em desenvolvimento backend, APIs e banco de dados.</p>
                 </div>
-                <div class="resume-item">
-                    <h3>Gerenciamento de Banco de Dados</h3>
-                    <div class="date">2023 - 2025</div>
-                    <p>Certificação SQL cobrindo conceitos modulares e intermediários de bancos de dados</p>
+                
+                <div class="education-item">
+                    <h3>Computação em Nuvem</h3>
+                    <p class="period">Outubro 2026 - Dezembro 2026</p>
+                    <p>Curso especializado em cloud computing, cobrindo principais provedores e tecnologias de infraestrutura em nuvem.</p>
                 </div>
             </div>
+        </section>
 
-            <div class="resume-section">
-                <h2>Desenvolvimento Profissional</h2>
-                <div class="resume-item">
-                    <h3>Workshops & Experiência Prática</h3>
-                    <p>Participação ativa em workshops práticos cobrindo colaboração no GitHub, 
-                    matemática de dados, desafios de programação Python e metodologias de trabalho em equipe</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Aprendizado Contínuo</h3>
-                    <p>Comprometido com o desenvolvimento profissional contínuo através de trilhas de 
-                    aprendizado estruturado e aplicação prática de novas tecnologias</p>
-                </div>
-            </div>
-        </div>
+        <section id="en" style="display:none">
+            <h2>Welcome to my portfolio!</h2>
+            <p>Software developer focused on Python and AI, always seeking new challenges and learning opportunities. Explore my certifications and workshops to learn about my professional development journey.</p>
 
-        <!-- English Content (Hidden by Default) -->
-        <div class="resume-content" id="english-content" style="display: none;">
-            <div class="resume-header">
-                <h1>Caio S Duarte</h1>
-                <p>Software Developer & AI Enthusiast</p>
+            <h2>Skills</h2>
+            <div class="skills">
+                <p><strong>Languages:</strong> Python, SQL, HTML, CSS, JavaScript</p>
+                <p><strong>Technologies:</strong> Machine Learning, IA, Web Development, Frontend, Backend, Full-Stack/p>
+                <p><strong>Tools:</strong> Git, GitHub, VS Code, Jupyter, Colab</p>
+                <p><strong>Frameworks & Libraries:</strong> React, Node, Flask, Django</p>
             </div>
 
-            <div class="resume-section">
-                <h2>Professional Summary</h2>
-                <div class="resume-item">
-                    <p>Passionate software developer with expertise in Python, AI/ML, and web development. 
-                    Demonstrated track record of completing multiple certifications in programming fundamentals, 
-                    AI/ML, and database management. Strong foundation in both theoretical knowledge and practical 
-                    application through workshops and hands-on projects.</p>
+            <h2>Academic Background</h2>
+            <div class="education">
+                <div class="education-item">
+                    <h3>Systems Analysis and Development</h3>
+                    <p class="period">January 2024 - July 2025</p>
+                    <p>Technical course at ETE-EAD/PE focused on software development, agile methodologies, and project management.</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Full-Stack Development (Certified by Google & Microsoft)</h3>
+                    <p class="period">June 2025 - July 2026</p>
+                    <p>Professional course approved by Google and Microsoft at Infinity School, covering modern web and mobile development technologies.</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Python Backend Development</h3>
+                    <p class="period">August 2025 - February 2026</p>
+                    <p>Specialized Python training by SOFTEX PE, focused on backend development, APIs, and databases.</p>
+                </div>
+                
+                <div class="education-item">
+                    <h3>Cloud Computing</h3>
+                    <p class="period">October 2026 - December 2026</p>
+                    <p>Specialized course in cloud computing, covering major providers and cloud infrastructure technologies.</p>
                 </div>
             </div>
+        </section>
+    </main>
 
-            <div class="resume-section">
-                <h2>Technical Skills</h2>
-                <div class="resume-item">
-                    <h3>Programming Languages</h3>
-                    <p>Python (Intermediate to Advanced), SQL, HTML, CSS & JavaScript</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Technologies & Frameworks</h3>
-                    <p>Machine Learning, Artificial Intelligence, Generative AI, Web Development</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Tools & Platforms</h3>
-                    <p>GitHub, Data Analysis Tools, Development Environments</p>
-                </div>
-            </div>
-
-            <div class="resume-section">
-                <h2>Education & Certifications</h2>
-                <div class="resume-item">
-                    <h3>System Analysis and Development</h3>
-                    <div class="date">2024 - 2025</div>
-                    <p>As a graduate in Systems Analysis and Development, I possess a comprehensive skill set in the full software development lifecycle. 
-                        My expertise includes translating complex business requirements into technical specifications, full-stack application development, and database design. 
-                        I am proficient in modern programming languages, Agile methodologies, and DevOps practices, enabling me to design, build, and deploy efficient, 
-                        scalable digital solutions that drive operational excellence and meet strategic business objectives.</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Python Development Track</h3>
-                    <div class="date">2023 - 2025</div>
-                    <p>Comprehensive Python development certification covering fundamentals, intermediate, 
-                    advanced concepts, and AI applications</p>
-                </div>
-                <div class="resume-item">
-                    <h3>AI & Machine Learning</h3>
-                    <div class="date">2023 - 2025</div>
-                    <p>Specialized training in AI fundamentals, machine learning basics, and generative AI technologies</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Database Management</h3>
-                    <div class="date">2023 - 2025</div>
-                    <p>SQL certification covering both module-based and intermediate database concepts</p>
-                </div>
-            </div>
-
-            <div class="resume-section">
-                <h2>Professional Development</h2>
-                <div class="resume-item">
-                    <h3>Workshops & Practical Experience</h3>
-                    <p>Active participation in hands-on workshops covering GitHub collaboration, 
-                    data mathematics, Python programming challenges, and teamwork methodologies</p>
-                </div>
-                <div class="resume-item">
-                    <h3>Continuous Learning</h3>
-                    <p>Committed to ongoing professional development through structured learning paths 
-                    and practical application of new technologies</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" onclick="scrollToTop()">↑ Topo</a>
+    <a href="#" class="back-to-top" title="Voltar ao topo / Back to top">↑</a>
 
     <script>
-        let currentLanguage = 'portuguese';
-
-        function toggleLanguage() {
-            const ptContent = document.getElementById('portuguese-content');
-            const enContent = document.getElementById('english-content');
-            const button = document.querySelector('.language-switcher');
-            const backToTop = document.querySelector('.back-to-top');
-
-            if (currentLanguage === 'portuguese') {
-                ptContent.style.display = 'none';
-                enContent.style.display = 'block';
-                button.textContent = 'Português';
-                backToTop.textContent = '↑ Top';
-                currentLanguage = 'english';
-            } else {
-                ptContent.style.display = 'block';
-                enContent.style.display = 'none';
-                button.textContent = 'English';
-                backToTop.textContent = '↑ Topo';
-                currentLanguage = 'portuguese';
-            }
-        }
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        function switchLang(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[id="pt"]').forEach(el => {
+                el.style.display = lang === 'pt-br' ? 'block' : 'none';
             });
+            document.querySelectorAll('[id="en"]').forEach(el => {
+                el.style.display = lang === 'en' ? 'block' : 'none';
+            });
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt-br');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            document.title = lang === 'pt-br' ? 'Portfólio de Caio S. Duarte' : 'Caio S. Duarte Portfolio';
         }
 
-        // Show/hide back to top button based on scroll position
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'block';
-            } else {
-                backToTop.style.display = 'none';
-            }
+        // Garantir estado inicial correto
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLang('pt-br');
         });
 
-        // Initially hide the back to top button
-        document.addEventListener('DOMContentLoaded', function() {
-            const backToTop = document.querySelector('.back-to-top');
+        // Botão voltar ao topo
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+        document.addEventListener('DOMContentLoaded', () => {
             backToTop.style.display = 'none';
         });
     </script>
