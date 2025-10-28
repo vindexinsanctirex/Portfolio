@@ -231,65 +231,7 @@
     </main>
 
     <a href="#" class="back-to-top" title="Voltar ao topo / Back to top">↑</a>
-
-    <script>
-        function switchLang(lang) {
-            document.documentElement.lang = lang;
-            document.querySelectorAll('[id="pt"]').forEach(el => {
-                el.style.display = lang === 'pt-br' ? 'block' : 'none';
-            });
-            document.querySelectorAll('[id="en"]').forEach(el => {
-                el.style.display = lang === 'en' ? 'block' : 'none';
-            });
-            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt-br');
-            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-            document.title = lang === 'pt-br' ? 'Conquistas' : 'Achievements';
-        }
-
-        function toggleSection(section) {
-            // Atualizar botões
-            document.querySelectorAll('.section-toggle button').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.section === section);
-            });
-
-            // Atualizar seções de conteúdo
-            document.querySelectorAll('.content-section').forEach(el => {
-                const isActive = el.id === `${section}-section`;
-                el.classList.toggle('active', isActive);
-            });
-        }
-
-        // Garantir estado inicial correto
-        document.addEventListener('DOMContentLoaded', () => {
-            switchLang('pt-br');
-        });
-
-        // Botão voltar ao topo
-        const backToTop = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
-        });
-        document.addEventListener('DOMContentLoaded', () => {
-            backToTop.style.display = 'none';
-        });
-
-        // Modal de imagem
-        const modal = document.getElementById('modal');
-        const modalImg = modal.querySelector('img');
-        const cards = document.querySelectorAll('.certificate-card, .workshop-card');
-
-        cards.forEach(card => {
-            const img = card.querySelector('img');
-            img.addEventListener('click', () => {
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-                modal.classList.add('active');
-            });
-        });
-
-        modal.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
