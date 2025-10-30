@@ -322,7 +322,7 @@ section {
     transform: translateY(-5px);
 }
 
-.project-link {
+.project-link, .view-code {
     display: inline-block;
     background: #007bff;
     color: white;
@@ -332,8 +332,17 @@ section {
     margin-top: 1rem;
 }
 
+.view-code {
+    background: #f1f1f1;
+    color: #2c3e50;
+}
+
 .project-link:hover {
     background: #0056b3;
+}
+
+.view-code:hover {
+    background: #e4e4e4;
 }
 
 .project-card img {
