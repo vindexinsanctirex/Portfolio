@@ -308,3 +308,30 @@ h2 {
 section {
     animation: fadeIn 0.5s ease-out;
 }
+
+.project-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 1rem;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-link {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+.project-link:hover {
+    background: #0056b3;
+}
