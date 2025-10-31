@@ -1,3 +1,4 @@
+
 // Função para alternar idiomas
 function switchLang(lang) {
     document.documentElement.lang = lang;
