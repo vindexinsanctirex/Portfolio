@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const themeText = themeToggle.querySelector('.theme-text');
         if (!themeText) return;
 
-        const smallScreen = window.matchMedia('(max-width: 480px)').matches;
+        const smallScreen = window.matchMedia('(max-width: 520px)').matches;
         if (smallScreen) {
             themeText.style.display = 'none';
             // manter acessibilidade
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     themeToggle.addEventListener('click', toggleTheme);
 
     // Atualiza quando a largura muda (reactivo)
-    const mq = window.matchMedia('(max-width: 480px)');
+    const mq = window.matchMedia('(max-width: 520px)');
     mq.addEventListener('change', applyResponsiveLayout);
     window.addEventListener('resize', applyResponsiveLayout);
 
